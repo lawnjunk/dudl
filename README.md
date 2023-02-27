@@ -1,6 +1,8 @@
 # dudl
 > a doodle pad
 
+![](/data/screenshot/2023-02-25_00-26_face_at_night.png)
+
 # about
 This is my first [zig](https://ziglang.org) project and also just my first
 project with a systems programming language. It mostly exists as a learning
