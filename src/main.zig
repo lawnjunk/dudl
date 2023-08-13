@@ -191,16 +191,16 @@ pub fn main() !void {
             _ = c.SDL_GetMouseState(&mouse_x, &mouse_y);
             // set the buffer value at the mouse position to 1
 
-            var location = clamp(i32, mouse_x + mouse_y * window_width, 0, @intCast(i32, buffer.len));
-            var position: usize = @intCast(usize, location);
+            var location: i32 = clamp(i32, mouse_x + mouse_y * window_width, 0, @as(i32, @intCast(buffer.len)));
+            var position: usize = @intCast(location);
             buffer[position] = colorToNumber(color);
         }
 
         // draw a white pixel on the screen for each value in buffer that is not 0
-        for (buffer) |*pixel, i| {
+        for (buffer, 0..) |*pixel, i| {
             if (pixel.* != 0) {
-                const x: i32 = @intCast(i32, i % window_width);
-                const y: i32 = @intCast(i32, i / window_width);
+                const x: i32 = @intCast(i % window_width);
+                const y: i32 = @intCast(i / window_width);
                 // _ = c.SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                 // _ = c.SDL_RenderDrawPoint(renderer, x, y);
 
