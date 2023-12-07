@@ -124,7 +124,7 @@ pub fn main() !void {
                     quit = true;
                 },
                 c.SDL_KEYDOWN => {
-                    var keydown_key = event.key.keysym.sym;
+                    const keydown_key = event.key.keysym.sym;
                     switch (keydown_key) {
                         c.SDLK_q => {
                             log("bye bye\n", .{});
@@ -191,8 +191,8 @@ pub fn main() !void {
             _ = c.SDL_GetMouseState(&mouse_x, &mouse_y);
             // set the buffer value at the mouse position to 1
 
-            var location: i32 = clamp(i32, mouse_x + mouse_y * window_width, 0, @as(i32, @intCast(buffer.len)));
-            var position: usize = @intCast(location);
+            const location: i32 = clamp(i32, mouse_x + mouse_y * window_width, 0, @as(i32, @intCast(buffer.len)));
+            const position: usize = @intCast(location);
             buffer[position] = colorToNumber(color);
         }
 
@@ -218,7 +218,7 @@ pub fn main() !void {
                 // _ = index;
                 // while (index < 250) : (index += 1) {
                 // set the pixel at x + i to r
-                var pixel_color = numberToColor(pixel.*);
+                const pixel_color = numberToColor(pixel.*);
                 sdlSetDrawColor(pixel_color, sdl_renderer);
                 // fill rect
                 _ = c.SDL_RenderFillRect(sdl_renderer, &c.SDL_Rect{
